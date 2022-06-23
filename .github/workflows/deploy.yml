@@ -14,7 +14,7 @@ jobs:
       - name: Use Node 16.x
         uses: actions/setup-node@v1
         with:
-        node-version: '16.x'
+          node-version: '16.x'
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -43,4 +43,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: deploy_dist/2022-06-23-diginamic-d04-angular-1
+          FOLDER: deploy_dist/top-colleagues

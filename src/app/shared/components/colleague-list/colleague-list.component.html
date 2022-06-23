@@ -1,0 +1,12 @@
+<div class="fluid-container">
+  <div class="row">
+    <div *ngFor="let co of colleagueList" class="col-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <tc-colleague [col]="co"></tc-colleague>
+          <tc-like-hate [score]="co.score" (lh)="updateScore(co, $event)"></tc-like-hate>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,8 +10,6 @@ export class ColleagueComponent implements OnInit {
 
   @Input() col !: Colleague
 
-
-
   constructor() { }
 
   ngOnInit(): void {

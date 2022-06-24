@@ -1,6 +1,6 @@
 <div class="fluid-container">
   <div class="row">
-    <div *ngFor="let co of colleagueList" class="col-4">
+    <div *ngFor="let co of colleagueList" class="col-12 col-sm-6 col-lg-4 col-xl-3">
       <div class="card" style="margin: 0.5em;">
         <div class="card-body text-center">
           <tc-colleague [col]="co" (vote)="outVote($event)"></tc-colleague>

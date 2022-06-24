@@ -1,13 +1,13 @@
 <div class="card" style="margin:0.5em">
   <div class="card-header">Historique</div>
   <div class="card-body">
-    <div *ngFor="let vote of voteList; let i=index" class="card">
+    <div *ngFor="let vote of voteList; let i=index" class="card" style="margin-bottom:0.5em">
       <div class="row">
         <div class="col-4"><img class="img-fluid" src={{vote.photo}} alt={{vote.pseudo}}></div>
         <div class="col-8">
           <h5>{{vote.pseudo}}</h5><br>
           <p>{{toString(vote)}}</p>
-          <button type="button" class="btn btn-danger" (click)="delVote(i)">Supprimer</button>
+          <button type="button" class="btn btn-danger" (click)="delVote(i)" style="margin:0.5em">Supprimer</button>
         </div>
       </div>
     </div>

@@ -23,7 +23,8 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
     LikeHateComponent,
     ColleagueComponent,
     ColleagueListComponent,
-    ScorePipe
+    ScorePipe,
+    VotingHistoryComponent
   ]
 })
 export class SharedModule { }

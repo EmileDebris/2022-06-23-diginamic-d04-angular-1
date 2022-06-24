@@ -9,17 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class VotingHistoryComponent implements OnInit {
 
-  @Input() vote!:Vote
+  @Input() voteList!:{pseudo:string, score:number, photo:string, vote:LikeHate}[]
 
-  toString(lh:LikeHate):string{
-    if (lh==LikeHate.LIKE){
-      return "aimé(e)"
-    }
-    else{
-      return "detesté(e)"
-    }
+  toString(vote:{pseudo:string, score:number, photo:string, vote:LikeHate}):string{
+   return `${vote.pseudo} est ${vote.vote==LikeHate.LIKE ? "aimé" : "détesté"}, son score est maintenant de ${vote.score}`
   }
 
+  delVote(i:number){
+    this.voteList.splice(i, 1)
+  }
 
   constructor() { }
 

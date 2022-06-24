@@ -10,14 +10,13 @@ export class LikeHateComponent implements OnInit {
 
   @Output() lh = new EventEmitter<LikeHate>();
   @Input() score!: number;
+  @Input() likeAble:boolean = true;
+  @Input() hateAble:boolean = true;
 
+  LikeHate = LikeHate
 
-  onClickLike(){
-    this.lh.emit(LikeHate.LIKE);
-  }
-
-  onClickHate(){
-    this.lh.emit(LikeHate.HATE)
+  onClick(choix:LikeHate){
+    this.lh.emit(choix);
   }
 
   constructor() { }

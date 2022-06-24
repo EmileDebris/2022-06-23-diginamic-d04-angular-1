@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header">Historique</div>
   <div class="card-body">
-    <div class="container">
+    <div *ngFor="let vote of voteList; let i=index" class="card">
       <div class="row">
-        <div class="col-2"><img src={{vote.colleague.photo}} alt={{vote.colleague.pseudo}} ></div>
-        <div class="col-10">
-          <h5>{{vote.colleague.pseudo}}</h5><br>
-          <p>{{vote.colleague.pseudo}} est {{toString(vote.vote)}}, il/elle a désormais un score de {{vote.colleague.score}}</p><br>
-          <button type="button" class="btn btn-Danger">Supprimer</button>
+        <div class="col-4"><img class="img-fluid" src={{vote.photo}} alt={{vote.pseudo}}></div>
+        <div class="col-8">
+          <h5>{{vote.pseudo}}</h5><br>
+          <p>{{toString(vote)}}</p>
+          <button type="button" class="btn btn-danger" (click)="delVote(i)">Supprimer</button>
         </div>
       </div>
     </div>

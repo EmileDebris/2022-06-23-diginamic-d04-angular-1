@@ -12,7 +12,7 @@ export class VotingHistoryComponent implements OnInit {
   @Input() voteList!:{pseudo:string, score:number, photo:string, vote:LikeHate}[]
 
   toString(vote:{pseudo:string, score:number, photo:string, vote:LikeHate}):string{
-   return `${vote.pseudo} est ${vote.vote==LikeHate.LIKE ? "aimé" : "détesté"}, son score est maintenant de ${vote.score}`
+   return `${vote.pseudo} est ${vote.vote==LikeHate.LIKE ? "aimé" : "détesté"}, son score est maintenant de ${vote.score} ${vote.score > 0 ? ":-)" : ":-("}`
   }
 
   delVote(i:number){

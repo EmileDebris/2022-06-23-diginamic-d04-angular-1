@@ -10,18 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePage implements OnInit {
 
-  voteList:{pseudo:string, score:number, photo:string, vote:LikeHate}[] = []
+  voteList:Vote[] = []
 
-
-  addVote(vote:Vote){
-    let copyVote = {
-      pseudo : vote.colleague.pseudo,
-      score : vote.colleague.score,
-      photo : vote.colleague.photo,
-      vote : vote.vote
-    }
-    this.voteList.unshift(copyVote)
-  }
 
   colleagueList:Colleague[] = [
     {

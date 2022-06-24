@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-12 col-md-8">
       <div class="row">
-        <tc-colleague-list [colleagueList]="colleagueList" (vote)="addVote($event)"></tc-colleague-list>
+        <tc-colleague-list [colleagueList]="colleagueList" (vote)="voteList.unshift($event)"></tc-colleague-list>
       </div>
     </div>
     <div class="col-12 col-md-4">

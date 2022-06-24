@@ -21,7 +21,7 @@ export class ColleagueComponent implements OnInit {
       co.score -= 1;
     }
     this.vote.emit({
-      colleague: co,
+      colleague: {...co},
       vote: lh
     })
   }

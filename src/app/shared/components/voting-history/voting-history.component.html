@@ -3,10 +3,10 @@
   <div class="card-body">
     <div *ngFor="let vote of voteList; let i=index" class="card" style="margin-bottom:0.5em">
       <div class="row">
-        <div class="col-4"><img class="img-fluid" src={{vote.photo}} alt={{vote.pseudo}}></div>
+        <div class="col-4"><img class="img-fluid" src={{vote.colleague.photo}} alt={{vote.colleague.pseudo}}></div>
         <div class="col-8">
-          <h5>{{vote.pseudo}}</h5><br>
-          <p>{{toString(vote)}}</p>
+          <h5>{{vote.colleague.pseudo}}</h5><br>
+          <p>{{vote.colleague.pseudo}} est {{vote.vote==LikeHate.LIKE ? "aimé" : "détesté"}}, son score est maintenant de {{vote.colleague.score}} {{vote.colleague.score > 0 ? ":-)" : ":-("}}</p>
           <button type="button" class="btn btn-danger" (click)="delVote(i)" style="margin:0.5em">Supprimer</button>
         </div>
       </div>

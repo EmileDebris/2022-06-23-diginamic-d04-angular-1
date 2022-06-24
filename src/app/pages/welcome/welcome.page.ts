@@ -20,7 +20,7 @@ export class WelcomePage implements OnInit {
       photo : vote.colleague.photo,
       vote : vote.vote
     }
-    this.voteList.push(copyVote)
+    this.voteList.unshift(copyVote)
   }
 
   colleagueList:Colleague[] = [

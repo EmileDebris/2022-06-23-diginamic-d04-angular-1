@@ -1,17 +1,18 @@
 import { VoteService } from './../../../providers/vote.service';
 import { LikeHate } from './../../../models/like-hate';
 import { Vote } from './../../../models/vote';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'tc-voting-history',
   templateUrl: './voting-history.component.html',
   styleUrls: ['./voting-history.component.scss']
 })
-export class VotingHistoryComponent implements OnInit {
+export class VotingHistoryComponent implements OnInit, OnDestroy {
 
   voteList:Vote[] = []
-
+  abonnement!:Subscription
   LikeHate = LikeHate
 
   removeElement(i:number){
@@ -20,7 +21,10 @@ export class VotingHistoryComponent implements OnInit {
 
   constructor(private voteService:VoteService) { }
 
-  ngOnInit(): void {this.voteService.abonner().subscribe(vote => this.voteList.unshift(vote))
+  ngOnInit(): void {this.abonnement = this.voteService.abonner().subscribe(vote => this.voteList.unshift(vote))
   }
 
+  ngOnDestroy(): void {
+      this.abonnement.unsubscribe();
+  }
 }

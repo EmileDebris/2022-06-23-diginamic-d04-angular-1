@@ -21,7 +21,7 @@ export class VotingHistoryComponent implements OnInit, OnDestroy {
 
   constructor(private voteService:VoteService) { }
 
-  ngOnInit(): void {this.abonnement = this.voteService.abonner().subscribe(vote => this.voteList.unshift(vote))
+  ngOnInit(): void {this.abonnement = this.voteService.abonner().subscribe(vote => this.voteList = vote)
   }
 
   ngOnDestroy(): void {

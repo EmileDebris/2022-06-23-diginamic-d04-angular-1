@@ -2,7 +2,7 @@ import { WelcomeModule } from './pages/welcome/welcome.module';
 import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     SharedModule,
-    WelcomeModule
+    WelcomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,5 +5,5 @@
   <br>
   {{col.score | score}}
   <br>
-  <tc-like-hate [likeAble]="col.score <= 999" [hateAble]="col.score >= -999" (lh)="updateScore(col, $event)"></tc-like-hate>
+  <tc-like-hate [likeAble]="col.score <= 999" [hateAble]="col.score >= -999" (lh)="updateScore($event)"></tc-like-hate>
 </p>

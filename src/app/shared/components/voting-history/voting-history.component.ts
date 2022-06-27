@@ -1,3 +1,4 @@
+import { VoteService } from './../../../providers/vote.service';
 import { LikeHate } from './../../../models/like-hate';
 import { Vote } from './../../../models/vote';
 import { Component, Input, OnInit } from '@angular/core';
@@ -9,19 +10,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class VotingHistoryComponent implements OnInit {
 
-  @Input() voteList!:Vote[]
+  voteList = this.voteService.getList()
 
   LikeHate = LikeHate
 
-  toString(vote:Vote):string{
-    return `${vote.colleague.pseudo} est ${vote.vote==LikeHate.LIKE ? "aimé" : "détesté"}, son score est maintenant de ${vote.colleague.score} ${vote.colleague.score > 0 ? ":-)" : ":-("}`
+  removeElement(i:number){
+    this.voteService.removeElement(i);
   }
 
-  delVote(i:number){
-    this.voteList.splice(i, 1)
-  }
-
-  constructor() { }
+  constructor(private voteService:VoteService) { }
 
   ngOnInit(): void {
   }

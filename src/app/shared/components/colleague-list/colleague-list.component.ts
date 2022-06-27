@@ -1,5 +1,5 @@
+import { ColleagueService } from './../../../providers/colleague.service';
 import { Vote } from './../../../models/vote';
-import { LikeHate } from './../../../models/like-hate';
 import { Colleague } from './../../../models/colleague';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -10,14 +10,9 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ColleagueListComponent implements OnInit {
 
-  @Input() colleagueList!:Colleague[]
-  @Output() vote = new EventEmitter<Vote>()
+  colleagueList = this.colleagueService.getList();
 
-  outVote(vote:Vote){
-    this.vote.emit(vote);
-  }
-
-  constructor() { }
+  constructor(private colleagueService:ColleagueService) { }
 
   ngOnInit(): void { }
 

@@ -1,3 +1,4 @@
+import { VoteService } from './../../../providers/vote.service';
 import { LikeHate } from './../../../models/like-hate';
 import { Vote } from './../../../models/vote';
 import { Colleague } from './../../../models/colleague';
@@ -20,12 +21,10 @@ export class ColleagueComponent implements OnInit {
     if (lh == LikeHate.HATE){
       co.score -= 1;
     }
-    this.vote.emit({
-      colleague: {...co},
-      vote: lh
-    })
+    this.voteService.addVote(co, lh);
   }
-  constructor() { }
+
+  constructor(private voteService : VoteService) { }
 
   ngOnInit(): void {
   }

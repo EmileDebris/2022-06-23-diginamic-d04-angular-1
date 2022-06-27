@@ -9,7 +9,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class LikeHateComponent implements OnInit {
 
   @Output() lh = new EventEmitter<LikeHate>();
-  @Input() score!: number;
   @Input() likeAble:boolean = true;
   @Input() hateAble:boolean = true;
 

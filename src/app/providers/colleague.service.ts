@@ -49,9 +49,5 @@ export class ColleagueService {
     }
   ]
 
-  getList(){
-    return this.colleagueList;
-  }
-
   constructor() { }
 }

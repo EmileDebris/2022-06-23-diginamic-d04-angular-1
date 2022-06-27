@@ -12,7 +12,6 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class ColleagueComponent implements OnInit {
 
   @Input() col !: Colleague
-  @Output() vote = new EventEmitter<Vote>();
 
   updateScore(co:Colleague, lh:LikeHate){
     if (lh == LikeHate.LIKE){

@@ -10,17 +10,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class VotingHistoryComponent implements OnInit {
 
-  voteList = this.voteService.getList()
+  voteList:Vote[] = []
 
   LikeHate = LikeHate
 
   removeElement(i:number){
-    this.voteService.removeElement(i);
+    this.voteList.splice(i,1);
   }
 
   constructor(private voteService:VoteService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {this.voteService.abonner().subscribe(vote => this.voteList.unshift(vote))
   }
 
 }

@@ -10,10 +10,10 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ColleagueListComponent implements OnInit {
 
-  colleagueList = this.colleagueService.getList();
+  colleagueList:Colleague[] =[]
 
   constructor(private colleagueService:ColleagueService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {this.colleagueList = this.colleagueService.colleagueList}
 
 }

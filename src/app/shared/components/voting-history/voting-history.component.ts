@@ -15,13 +15,21 @@ export class VotingHistoryComponent implements OnInit, OnDestroy {
   abonnement!:Subscription
   LikeHate = LikeHate
 
+  constructor(private voteService:VoteService) { }
+
   removeElement(i:number){
     this.voteList.splice(i,1);
   }
 
-  constructor(private voteService:VoteService) { }
+  refresh() {
+    this.voteService.getListeVotes()
+      .subscribe(votesServeur => this.voteList = votesServeur);
+  }
 
-  ngOnInit(): void {this.abonnement = this.voteService.abonner().subscribe(vote => this.voteList = vote)
+
+  ngOnInit(): void {
+    this.refresh();
+    this.abonnement = this.voteService.abonner().subscribe(() => this.refresh())
   }
 
   ngOnDestroy(): void {

@@ -2,5 +2,6 @@ import { LikeHate } from './like-hate';
 import { Colleague } from './colleague';
 export interface Vote {
   colleague:Colleague;
-  like_hate:string;
+  vote:LikeHate;
+  score:number
 }

@@ -7,7 +7,7 @@
           <div class="col-4"><img class="img-fluid" src={{vote.colleague.photo}} alt={{vote.colleague.pseudo}}></div>
           <div class="col-8">
             <h5>{{vote.colleague.pseudo}}</h5><br>
-            <p>{{vote.colleague.pseudo}} est {{vote.like_hate=="LIKE" ? "aimé" : "détesté"}}, son score est maintenant de {{vote.colleague.score}} {{vote.colleague.score > 0 ? ":-)" : ":-("}}</p>
+            <p>{{vote.colleague.pseudo}} est {{vote.vote==LikeHate.LIKE ? "aimé" : "détesté"}}, son score est maintenant de {{vote.score}} {{vote.score > 0 ? ":-)" : ":-("}}</p>
             <button type="button" class="btn btn-danger" (click)="removeElement(i)" style="margin:0.5em">Supprimer</button>
           </div>
         </div>

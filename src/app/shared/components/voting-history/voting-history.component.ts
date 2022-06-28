@@ -33,7 +33,9 @@ export class VotingHistoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.refresh();
     this.abonnementVote = this.voteService.abonner().subscribe(() => this.refresh())
-    this.abonnementEvents = this.eventsService.getEventObservable().pipe(filter(evenement => evenement === Events.REFRESH)).subscribe(() => this.refresh())
+    this.abonnementEvents = this.eventsService.getEventObservable()
+    .pipe(filter(evenement => evenement === Events.REFRESH))
+    .subscribe(() => this.refresh())
   }
 
   ngOnDestroy(): void {

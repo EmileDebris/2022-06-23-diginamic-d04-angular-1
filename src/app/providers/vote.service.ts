@@ -14,12 +14,12 @@ export class VoteService {
 
   private voteSubject = new Subject<Vote>();
 
-  addVote(colleague:Colleague, vote:LikeHate){
+  addVote(colleague:Colleague, like_hate:LikeHate){
     return this.http.post<FullColleague>(url, {
       "pseudo": colleague.pseudo,
-      "like_hate": vote
+      "like_hate": like_hate
     }).pipe(
-      tap(fullColleague => this.voteSubject.next({colleague:fullColleague, vote, score: fullColleague.score})));
+      tap(fullColleague => this.voteSubject.next({colleague:fullColleague, like_hate, score: fullColleague.score})));
   }
 
   getListeVotes(){

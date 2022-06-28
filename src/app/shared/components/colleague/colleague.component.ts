@@ -23,7 +23,11 @@ export class ColleagueComponent implements OnInit, OnDestroy {
 
   constructor(private voteService : VoteService) { }
 
-  ngOnInit(): void {this.abonnement = this.voteService.abonner().subscribe(vote => {this.votes.unshift(vote)})
+  ngOnInit(): void {
+    this.abonnement = this.voteService.abonner()
+    .subscribe(vote => {
+      this.votes.unshift(vote)
+    });
   }
   ngOnDestroy(): void {
       this.abonnement.unsubscribe()

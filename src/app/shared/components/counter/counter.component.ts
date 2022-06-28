@@ -1,8 +1,10 @@
+import { EventsService } from './../../../providers/events.service';
 import { Vote } from './../../../models/vote';
 import { LikeHate } from './../../../models/like-hate';
-import { Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
 import { VoteService } from './../../../providers/vote.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Events } from 'src/app/models/events';
 
 @Component({
   selector: 'tc-counter',
@@ -14,9 +16,10 @@ export class CounterComponent implements OnInit, OnDestroy {
   totalLike = 0;
   totalHate = 0;
   abonnementVote!:Subscription
+  abonnementEvents!:Subscription
 
 
-  constructor(private voteService : VoteService) { }
+  constructor(private voteService : VoteService, private eventsService:EventsService) { }
 
   refresh(){
     this.totalLike = 0
@@ -34,6 +37,7 @@ export class CounterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.refresh();
     this.abonnementVote = this.voteService.abonner().subscribe(() => this.refresh())
+    this.abonnementEvents = this.eventsService.getEventObservable().pipe(filter(evenement => evenement === Events.REFRESH)).subscribe(() => this.refresh())
   }
 
   ngOnDestroy(): void {

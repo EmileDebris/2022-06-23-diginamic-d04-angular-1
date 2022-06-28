@@ -8,3 +8,10 @@ export interface FullColleague extends Colleague{
   first:string;
   last:string;
 }
+
+export interface AddColleague{
+  pseudo : string;
+  photo : string;
+  first:string;
+  last:string;
+}

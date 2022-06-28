@@ -1,1 +1,36 @@
-<p>create-colleague works!</p>
+<form (ngSubmit)="valider()" #statutForm="ngForm">
+  <div>
+    <label for="pseudoInput" class="form-label">Pseudo : </label>
+    <input type="text" #statutPseudo="ngModel" name="pseudo" id="pseudoInput" class="form-control" [(ngModel)]="newColleague.pseudo" required>
+    <p *ngIf="statutPseudo.invalid && statutPseudo.dirty">
+      Champ requis
+    </p>
+  </div>
+
+<div>
+  <label for="nomInput" class="form-label">Nom : </label>
+  <input type="text" #statutLast="ngModel" name="last" id="nomInput" class="form-control" [(ngModel)]="newColleague.last" required minlength="2">
+  <p *ngIf="statutLast.invalid && statutLast.dirty">
+    Champ invalide (min 2 caractères)
+  </p>
+</div>
+
+<div>
+  <label for="prenomInput" class="form-label">Prénom : </label>
+  <input type="text" #statutFirst="ngModel" name="first" id="prenomInput" class="form-control" [(ngModel)]="newColleague.first" required minlength="2">
+  <p *ngIf="statutFirst.invalid && statutFirst.dirty">
+    Champ invalide (min 2 caractères)
+  </p>
+</div>
+
+<div>
+  <label for="urlInput" class="form-label">Photo URL : </label>
+  <input type="url" #statutPhoto="ngModel" name="photo" id="urlInput" class="form-control" [(ngModel)]="newColleague.photo" required>
+  <p *ngIf="statutPhoto.invalid && statutPhoto.dirty">
+    Champ requis
+  </p>
+</div>
+
+<button type="submit" class="btn btn-primary" [disabled]="statutForm.invalid">Ajouter</button>
+
+</form>

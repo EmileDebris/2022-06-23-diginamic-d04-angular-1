@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateColleaguePage } from './create-colleague.page';
@@ -9,7 +11,11 @@ import { CreateColleaguePage } from './create-colleague.page';
     CreateColleaguePage
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
+  ],
+  exports:[
+    CreateColleaguePage
   ]
 })
 export class CreateColleagueModule { }

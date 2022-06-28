@@ -1,3 +1,6 @@
+import { Subscription } from 'rxjs';
+import { AddColleague } from './../../models/colleague';
+import { ColleagueService } from './../../providers/colleague.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateColleaguePage implements OnInit {
 
-  constructor() { }
+  constructor(private colleagueServ:ColleagueService) { }
+
+
+  newColleague:AddColleague = {
+    pseudo : '',
+    photo : '',
+    first: '',
+    last: ''
+  }
+
+  valider(){
+    this.colleagueServ.addColleague(this.newColleague)
+  }
+
+
 
   ngOnInit(): void {
   }

@@ -6,6 +6,7 @@ import { ColleagueListComponent } from '../shared/components/colleague-list/coll
 import { ScorePipe } from './pipes/score.pipe';
 import { VotingHistoryComponent } from '../shared/components/voting-history/voting-history.component';
 import { CounterComponent } from '../shared/components/counter/counter.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { CounterComponent } from '../shared/components/counter/counter.component
     CounterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports:[
     LikeHateComponent,

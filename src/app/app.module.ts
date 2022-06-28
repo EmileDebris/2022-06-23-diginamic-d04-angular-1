@@ -1,3 +1,4 @@
+import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 import { WelcomeModule } from './pages/welcome/welcome.module';
 import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     SharedModule,
     WelcomeModule,
-    HttpClientModule
+    HttpClientModule,
+    CreateColleagueModule
   ],
   providers: [],
   bootstrap: [AppComponent]

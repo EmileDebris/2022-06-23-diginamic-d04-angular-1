@@ -1,8 +1,10 @@
+import { EventsService } from './../../../providers/events.service';
 import { VoteService } from './../../../providers/vote.service';
 import { LikeHate } from './../../../models/like-hate';
 import { Vote } from './../../../models/vote';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
+import { Events } from 'src/app/models/events';
 
 @Component({
   selector: 'tc-voting-history',
@@ -12,10 +14,11 @@ import { Subscription } from 'rxjs';
 export class VotingHistoryComponent implements OnInit, OnDestroy {
 
   voteList:Vote[] = []
-  abonnement!:Subscription
+  abonnementVote!:Subscription
+  abonnementEvents!:Subscription
   LikeHate = LikeHate
 
-  constructor(private voteService:VoteService) { }
+  constructor(private voteService:VoteService, private eventsService:EventsService) { }
 
   removeElement(i:number){
     this.voteList.splice(i,1);
@@ -29,10 +32,11 @@ export class VotingHistoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.refresh();
-    this.abonnement = this.voteService.abonner().subscribe(() => this.refresh())
+    this.abonnementVote = this.voteService.abonner().subscribe(() => this.refresh())
+    this.abonnementEvents = this.eventsService.getEventObservable().pipe(filter(evenement => evenement === Events.REFRESH)).subscribe(() => this.refresh())
   }
 
   ngOnDestroy(): void {
-      this.abonnement.unsubscribe();
+      this.abonnementVote.unsubscribe();
   }
 }

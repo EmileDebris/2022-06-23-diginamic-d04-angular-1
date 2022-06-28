@@ -1,3 +1,5 @@
+import { Events } from './../../models/events';
+import { EventsService } from './../../providers/events.service';
 import { Colleague } from './../../models/colleague';
 import { LikeHate } from './../../models/like-hate';
 import { Vote } from './../../models/vote';
@@ -10,9 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePage implements OnInit {
 
-  voteList:Vote[] = []
 
-  constructor() { }
+  constructor(private eventsService : EventsService) { }
+
+  refresh(){
+    this.eventsService.addEvent(Events.REFRESH)
+  }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,8 @@
-import { AddColleague } from './../../../models/colleague';
+import { Observable, of } from 'rxjs';
+import { AddColleague, FullColleague } from './../../../models/colleague';
 import { ColleagueService } from './../../../providers/colleague.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'tc-create-collegue-reactive-forms',
@@ -14,11 +15,14 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private colleagueServ:ColleagueService) {
     this.formColleague = fb.group({
-      pseudo:['', [Validators.required]],
+      pseudo:['',{
+        validators: [Validators.required],
+        asyncValidators : [this.validerPseudo]
+      }],
       last:['', [Validators.minLength(2), Validators.required]],
       first:['', [Validators.minLength(2), Validators.required]],
       photo:['', [Validators.required]]
-    })
+    }, {validator: this.validerFirstLast})
   }
 
   valider(){
@@ -45,6 +49,53 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
 
   get photoInvalid(){
     return this.formColleague.controls['photo'].dirty && this.formColleague.controls['photo'].invalid
+  }
+
+  get firstLastInvalid(){
+    if (this.formColleague.errors != null){
+      return "firstLast" in this.formColleague.errors
+    }
+    return false
+  }
+
+  validerFirstLast(control:AbstractControl):ValidationErrors | null{
+    if (control.get("last")?.pristine || control.get("first")?.pristine || control.get("last")?.value == "" || control.get("first")?.value == "" ){
+      return null
+    }
+    const last = control.get("last")?.value
+    const first = control.get("first")?.value
+    if(last == first){
+      return { firstLast : 'first name must be different from last name' }
+    }
+    return null;
+  }
+
+  collegue:FullColleague={
+    pseudo: '',
+    last: '',
+    first: '',
+    photo: '',
+    score:0
+  };
+
+  validerPseudo(control:FormControl):Observable<ValidationErrors | null>{
+    if (control.value === null){
+      return new Observable<null>();
+    }
+
+    this.colleagueServ.getPseudo(control.value).subscribe(col => this.collegue = col, () => {})
+
+    if(this.collegue.first != ''){
+      this.collegue={
+        pseudo: '',
+        last: '',
+        first: '',
+        photo: '',
+        score:0
+      };
+      return of({InvalidPseudo: "ce pseudo existe déjà"})
+    }
+     return new Observable<null>();
   }
 
   ngOnInit(): void {

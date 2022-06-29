@@ -1,37 +1,61 @@
-<form [formGroup]="formColleague">
-  <div>
-    <label for="pseudoInput" class="form-label">Pseudo : </label>
-    <input type="text" formControlName="pseudo" id="pseudoInput" class="form-control">
-    <p *ngIf="pseudoInvalid">
-      Champ requis
-    </p>
-  </div>
+<h2>Formulaire réactif</h2>
 
-<div>
-  <label for="nomInput" class="form-label">Nom : </label>
-  <input type="text" formControlName="last" id="nomInput" class="form-control">
-  <p *ngIf="lastInvalid">
-    Champ invalide (min 2 caractères)
-  </p>
+<div class="container">
+  <form [formGroup]="formColleague">
+    <div class="row">
+      <div class="col-3">
+        <label for="pseudoInput" class="form-label">Pseudo : </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="pseudo" id="pseudoInput" class="form-control">
+        <p *ngIf="pseudoInvalid">
+          Champ requis
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label for="nomInput" class="form-label">Nom : </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="last" id="nomInput" class="form-control">
+        <p *ngIf="lastInvalid">
+          Champ invalide (min 2 caractères)
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label for="prenomInput" class="form-label">Prénom : </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="first" id="prenomInput" class="form-control">
+        <p *ngIf="firstInvalid">
+          Champ invalide (min 2 caractères)
+        </p>
+        <p *ngIf="firstLastInvalid">
+          Le nom et le prénom doivent-être différents
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label for="urlInput" class="form-label">Photo URL : </label>
+      </div>
+      <div class="col-6">
+        <input type="url" formControlName="photo" id="urlInput" class="form-control">
+        <p *ngIf="photoInvalid">
+          Champ requis
+        </p>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="valider()"
+      [disabled]="formColleague.invalid" style="margin:1em">Ajouter</button>
+
+
+  </form>
 </div>
-
-<div>
-  <label for="prenomInput" class="form-label">Prénom : </label>
-  <input type="text" formControlName="first" id="prenomInput" class="form-control">
-  <p *ngIf="firstInvalid">
-    Champ invalide (min 2 caractères)
-  </p>
-</div>
-
-<div>
-  <label for="urlInput" class="form-label">Photo URL : </label>
-  <input type="url" formControlName="photo" id="urlInput" class="form-control">
-  <p *ngIf="photoInvalid">
-    Champ requis
-  </p>
-</div>
-
-<button type="submit" class="btn btn-primary" (click)="valider()">Ajouter</button>
-
-
-</form>

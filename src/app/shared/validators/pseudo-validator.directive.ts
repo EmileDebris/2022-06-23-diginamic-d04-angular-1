@@ -11,7 +11,7 @@ import { NG_ASYNC_VALIDATORS, AbstractControl, ValidationErrors } from '@angular
 })
 export class PseudoValidatorDirective {
 
-  obj:FullColleague= {
+  collegue:FullColleague= {
     pseudo: '',
     last: '',
     first: '',
@@ -26,17 +26,17 @@ export class PseudoValidatorDirective {
       return new Observable<null>();
     }
 
-    this.colleagueService.getPseudo(control.get("pseudo")?.value).subscribe(col => this.obj = col, () => {})
+    this.colleagueService.getPseudo(control.get("pseudo")?.value).subscribe(col => this.collegue = col, () => {})
 
-    if(this.obj.first != ''){
-      this.obj={
+    if(this.collegue.first != ''){
+      this.collegue={
         pseudo: '',
         last: '',
         first: '',
         photo: '',
         score:0
       };
-      return of(this.obj)
+      return of({InvalidPseudo: "ca pseudo existe déjà"})
     }
      return new Observable<null>();
   }

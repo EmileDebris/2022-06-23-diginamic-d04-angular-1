@@ -32,7 +32,17 @@ export class CreateColleagueFormsComponent implements OnInit {
     }
   }
 
-
+  checkFirstLast(statutForm:NgForm):boolean{
+    if (statutForm.errors == null){
+      return false;
+    }
+    if("firstLast" in statutForm.errors){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
   ngOnInit(): void {
   }

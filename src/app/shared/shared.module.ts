@@ -8,6 +8,7 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
 import { CounterComponent } from '../shared/components/counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { CreateColleagueFormsComponent } from './components/create-colleague-forms/create-colleague-forms.component';
+import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 
 
 
@@ -19,7 +20,8 @@ import { CreateColleagueFormsComponent } from './components/create-colleague-for
     ScorePipe,
     VotingHistoryComponent,
     CounterComponent,
-    CreateColleagueFormsComponent
+    CreateColleagueFormsComponent,
+    FirstLastValidatorDirective
   ],
   imports: [
     CommonModule,

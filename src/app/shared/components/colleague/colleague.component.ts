@@ -15,13 +15,13 @@ export class ColleagueComponent implements OnInit, OnDestroy {
   @Input() col !: Colleague;
   abonnement!:Subscription;
 
+  constructor(private voteService : VoteService) { }
+
   updateScore(lh:LikeHate){
     this.voteService.addVote(this.col, lh)
     .subscribe(fullcol => {
       this.col.score = fullcol.score}) ;
   }
-
-  constructor(private voteService : VoteService) { }
 
   ngOnInit(): void {
     this.abonnement = this.voteService.abonner()

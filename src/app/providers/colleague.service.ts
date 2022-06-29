@@ -15,11 +15,7 @@ export class ColleagueService {
   constructor(private http: HttpClient) { }
 
   addColleague(newColleague:AddColleague){
-    this.http.post<FullColleague>(url, newColleague).pipe(
-      tap(fullColleague => this.colleagueSubject.next({
-        pseudo: fullColleague.pseudo, score: fullColleague.score, photo:fullColleague.photo
-      }))
-    )
+    return this.http.post<FullColleague>(url, newColleague)
   }
 
   listerColleague():Observable<Colleague[]>{

@@ -1,4 +1,4 @@
-<form (ngSubmit)="valider()" #statutForm="ngForm">
+<form (ngSubmit)="valider(statutForm)" #statutForm="ngForm">
   <div>
     <label for="pseudoInput" class="form-label">Pseudo : </label>
     <input type="text" #statutPseudo="ngModel" name="pseudo" id="pseudoInput" class="form-control" [(ngModel)]="newColleague.pseudo" required>

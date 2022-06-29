@@ -1,6 +1,6 @@
 import { FullColleague } from './../../models/colleague';
 import { ColleagueService } from './../../providers/colleague.service';
-import { Observable, filter } from 'rxjs';
+import { Observable, filter, of, from } from 'rxjs';
 import { Directive } from '@angular/core';
 import { NG_ASYNC_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
 
@@ -11,18 +11,34 @@ import { NG_ASYNC_VALIDATORS, AbstractControl, ValidationErrors } from '@angular
 })
 export class PseudoValidatorDirective {
 
+  obj:FullColleague= {
+    pseudo: '',
+    last: '',
+    first: '',
+    photo: '',
+    score:0
+  };
+
   constructor(private colleagueService : ColleagueService) { }
 
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
-    if (control.get("pseudo")?.value == null){
+    if (control.get("pseudo")?.value === null){
       return new Observable<null>();
     }
-    let obj!:FullColleague | Error;
-    this.colleagueService.getPseudo(control.get("pseudo")?.value).subscribe(col => obj = col)
-    if (obj==undefined){
-      return new Observable<ValidationErrors>()
+
+    this.colleagueService.getPseudo(control.get("pseudo")?.value).subscribe(col => this.obj = col, () => {})
+
+    if(this.obj.first != ''){
+      this.obj={
+        pseudo: '',
+        last: '',
+        first: '',
+        photo: '',
+        score:0
+      };
+      return of(this.obj)
     }
-    return new Observable<null>();
-    }
+     return new Observable<null>();
+  }
 
 }

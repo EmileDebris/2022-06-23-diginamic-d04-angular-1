@@ -11,30 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateColleaguePage implements OnInit {
 
-  constructor(private colleagueServ:ColleagueService) { }
-
-
-  newColleague:AddColleague = {
-    pseudo : '',
-    photo : '',
-    first: '',
-    last: ''
-  }
-
-  valider(statutForm:NgForm){
-    this.colleagueServ.addColleague(this.newColleague).subscribe(colleague => this.newColleague = colleague)
-
-    statutForm.reset()
-
-    this.newColleague = {
-      pseudo : '',
-      photo : '',
-      first: '',
-      last: ''
-    }
-  }
-
-
+  constructor() { }
 
   ngOnInit(): void {
   }

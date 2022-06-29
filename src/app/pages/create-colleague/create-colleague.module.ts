@@ -12,7 +12,7 @@ import { CreateColleaguePage } from './create-colleague.page';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    SharedModule
   ],
   exports:[
     CreateColleaguePage

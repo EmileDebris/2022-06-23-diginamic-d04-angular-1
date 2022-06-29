@@ -1,3 +1,4 @@
+import { CreateCollegueReactiveModule } from './pages/create-collegue-reactive/create-collegue-reactive.module';
 import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 import { WelcomeModule } from './pages/welcome/welcome.module';
 import { SharedModule } from './shared/shared.module';
@@ -15,7 +16,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     WelcomeModule,
     HttpClientModule,
-    CreateColleagueModule
+    CreateColleagueModule,
+    CreateCollegueReactiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,5 @@
-import { FullColleague } from './../../models/colleague';
 import { ColleagueService } from './../../providers/colleague.service';
-import { Observable, filter, of, from, catchError, map } from 'rxjs';
+import { Observable, of, catchError, map } from 'rxjs';
 import { Directive } from '@angular/core';
 import { NG_ASYNC_VALIDATORS, AbstractControl, ValidationErrors, AsyncValidator } from '@angular/forms';
 

@@ -3,7 +3,7 @@ import { EventsService } from './../../../providers/events.service';
 import { filter, Subscription } from 'rxjs';
 import { ColleagueService } from './../../../providers/colleague.service';
 import { Colleague } from './../../../models/colleague';
-import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'tc-colleague-list',

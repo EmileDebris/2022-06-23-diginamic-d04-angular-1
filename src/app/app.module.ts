@@ -1,8 +1,4 @@
 import { ShowColleagueModule } from './pages/show-colleague/show-colleague.module';
-import { CreateCollegueReactivePage } from './pages/create-collegue-reactive/create-collegue-reactive.page';
-import { CreateColleaguePage } from './pages/create-colleague/create-colleague.page';
-import { WelcomePage } from './pages/welcome/welcome.page';
-import { RouterModule, Routes } from '@angular/router';
 import { CreateCollegueReactiveModule } from './pages/create-collegue-reactive/create-collegue-reactive.module';
 import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 import { WelcomeModule } from './pages/welcome/welcome.module';

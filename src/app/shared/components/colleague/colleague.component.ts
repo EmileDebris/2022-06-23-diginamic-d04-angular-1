@@ -3,7 +3,7 @@ import { VoteService } from './../../../providers/vote.service';
 import { LikeHate } from './../../../models/like-hate';
 import { Vote } from './../../../models/vote';
 import { Colleague } from './../../../models/colleague';
-import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'tc-colleague',

@@ -1,6 +1,8 @@
+import { Events } from './../../../models/events';
+import { EventsService } from './../../../providers/events.service';
 import { Router } from '@angular/router';
 import { map, Observable, of, catchError } from 'rxjs';
-import { AddColleague, FullColleague } from './../../../models/colleague';
+import { AddColleague} from './../../../models/colleague';
 import { ColleagueService } from './../../../providers/colleague.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
@@ -14,7 +16,7 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
 
   formColleague: FormGroup
 
-  constructor(private fb: FormBuilder, private colleagueServ:ColleagueService, private router:Router) {
+  constructor(private fb: FormBuilder, private colleagueServ:ColleagueService, private router:Router, private eventsService:EventsService) {
     this.formColleague = fb.group({
       pseudo:['',{
         validators: [Validators.required],
@@ -35,7 +37,12 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
       photo: this.formColleague.get("photo")?.value
     }
     this.colleagueServ.addColleague(newColleague).subscribe(colleague => newColleague = colleague)
+    this.refresh()
     this.router.navigateByUrl("/colleagues")
+  }
+
+  refresh(){
+    this.eventsService.addEvent(Events.REFRESH)
   }
 
   get pseudoRequis(){

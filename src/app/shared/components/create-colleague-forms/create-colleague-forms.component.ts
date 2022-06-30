@@ -1,3 +1,5 @@
+import { Events } from './../../../models/events';
+import { EventsService } from './../../../providers/events.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ColleagueService } from './../../../providers/colleague.service';
@@ -10,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-colleague-forms.component.scss']
 })
 export class CreateColleagueFormsComponent implements OnInit {
-  constructor(private colleagueServ:ColleagueService, private router:Router) { }
+  constructor(private colleagueServ:ColleagueService, private router:Router, private eventsService:EventsService) { }
 
 
   newColleague:AddColleague = {
@@ -31,7 +33,12 @@ export class CreateColleagueFormsComponent implements OnInit {
       first: '',
       last: ''
     }
+    this.refresh()
     this.router.navigateByUrl("/colleagues")
+  }
+
+  refresh(){
+    this.eventsService.addEvent(Events.REFRESH)
   }
 
 

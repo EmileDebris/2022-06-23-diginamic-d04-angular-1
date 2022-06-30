@@ -22,7 +22,8 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
       last:['', [Validators.minLength(2), Validators.required]],
       first:['', [Validators.minLength(2), Validators.required]],
       photo:['', [Validators.required]]
-    }, {validators: [this.validerFirstLast]})
+    }, {validators: [this.validerFirstLast],
+      updateOn: "blur"})
   }
 
   valider(){

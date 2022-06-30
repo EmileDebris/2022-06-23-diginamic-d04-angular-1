@@ -1,7 +1,7 @@
 <h2>Formulaire non réactif : </h2>
 
 <div class="container">
-  <form tcFirstLastValidator (ngSubmit)="valider(statutForm)" #statutForm="ngForm">
+  <form tcFirstLastValidator (ngSubmit)="valider(statutForm)" #statutForm="ngForm" [ngFormOptions]="{updateOn : 'blur'}">
     <div class="row">
       <div class="col-3">
         <label for="pseudoInput" class="form-label">Pseudo : </label>

@@ -45,17 +45,7 @@ export class CreateColleagueFormsComponent implements OnInit {
     }
   }
 
-  checkPseudo(statutForm:NgForm):boolean{
-    if (statutForm.errors == null){
-      return false;
-    }
-    if("invalidPseudo" in statutForm.errors){
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
+
 
   ngOnInit(): void {
   }

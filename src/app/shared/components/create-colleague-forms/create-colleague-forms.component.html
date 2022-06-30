@@ -1,19 +1,19 @@
 <h2>Formulaire non réactif : </h2>
 
 <div class="container">
-  <form tcFirstLastValidator tcPseudoValidator (ngSubmit)="valider(statutForm)" #statutForm="ngForm">
+  <form tcFirstLastValidator (ngSubmit)="valider(statutForm)" #statutForm="ngForm">
     <div class="row">
       <div class="col-3">
         <label for="pseudoInput" class="form-label">Pseudo : </label>
       </div>
       <div class="col-6">
         <input type="text" #statutPseudo="ngModel" name="pseudo" id="pseudoInput" class="form-control"
-          [(ngModel)]="newColleague.pseudo" required>
-        <p *ngIf="statutPseudo.invalid && statutPseudo.dirty">
+          [(ngModel)]="newColleague.pseudo" required tcPseudoValidator>
+        <p *ngIf="statutPseudo.hasError('required') && statutPseudo.dirty">
           Champ requis
         </p>
-        <p *ngIf="checkPseudo(statutForm)">
-          Ce pseudo exite déjà
+        <p *ngIf="statutPseudo.dirty && statutPseudo.hasError('InvalidPseudo')">
+          Ce pseudo existe déjà
         </p>
       </div>
     </div>

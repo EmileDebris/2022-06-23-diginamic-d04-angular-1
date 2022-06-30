@@ -8,8 +8,11 @@
       </div>
       <div class="col-6">
         <input type="text" formControlName="pseudo" id="pseudoInput" class="form-control">
-        <p *ngIf="pseudoInvalid">
+        <p *ngIf="pseudoRequis">
           Champ requis
+        </p>
+        <p *ngIf="pseudoInvalid">
+          Le pseudo existe déjà
         </p>
       </div>
     </div>

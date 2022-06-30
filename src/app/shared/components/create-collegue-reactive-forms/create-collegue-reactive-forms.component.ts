@@ -1,4 +1,4 @@
-import { Observable, of } from 'rxjs';
+import { map, Observable, of, catchError } from 'rxjs';
 import { AddColleague, FullColleague } from './../../../models/colleague';
 import { ColleagueService } from './../../../providers/colleague.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,12 +17,12 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
     this.formColleague = fb.group({
       pseudo:['',{
         validators: [Validators.required],
-        asyncValidators : [this.validerPseudo]
+        asyncValidators : [this.validerPseudo.bind(this)]
       }],
       last:['', [Validators.minLength(2), Validators.required]],
       first:['', [Validators.minLength(2), Validators.required]],
       photo:['', [Validators.required]]
-    }, {validator: this.validerFirstLast})
+    }, {validators: [this.validerFirstLast]})
   }
 
   valider(){
@@ -35,9 +35,14 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
     this.colleagueServ.addColleague(newColleague).subscribe(colleague => newColleague = colleague)
   }
 
-  get pseudoInvalid(){
-    return this.formColleague.controls['pseudo'].dirty && this.formColleague.controls['pseudo'].invalid
+  get pseudoRequis(){
+    return this.formColleague.controls['pseudo'].dirty && this.formColleague.controls['pseudo'].hasError('required')
   }
+
+  get pseudoInvalid(){
+    return this.formColleague.controls['pseudo'].dirty && this.formColleague.controls['pseudo'].hasError('InvalidPseudo')
+  }
+
 
   get lastInvalid(){
     return this.formColleague.controls['last'].dirty && this.formColleague.controls['last'].invalid
@@ -70,32 +75,19 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
     return null;
   }
 
-  collegue:FullColleague={
-    pseudo: '',
-    last: '',
-    first: '',
-    photo: '',
-    score:0
-  };
+
 
   validerPseudo(control:FormControl):Observable<ValidationErrors | null>{
     if (control.value === null){
       return new Observable<null>();
     }
 
-    this.colleagueServ.getPseudo(control.value).subscribe(col => this.collegue = col, () => {})
+    return this.colleagueServ.getPseudo(control.value)
+      .pipe(
+        map(() => <ValidationErrors>{InvalidPseudo : "Ce pseudo existe déjà"}),
+        catchError(() => of(null))
+      )
 
-    if(this.collegue.first != ''){
-      this.collegue={
-        pseudo: '',
-        last: '',
-        first: '',
-        photo: '',
-        score:0
-      };
-      return of({InvalidPseudo: "ce pseudo existe déjà"})
-    }
-     return new Observable<null>();
   }
 
   ngOnInit(): void {

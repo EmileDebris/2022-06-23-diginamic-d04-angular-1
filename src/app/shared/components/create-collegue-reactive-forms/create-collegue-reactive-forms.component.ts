@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { map, Observable, of, catchError } from 'rxjs';
 import { AddColleague, FullColleague } from './../../../models/colleague';
 import { ColleagueService } from './../../../providers/colleague.service';
@@ -13,7 +14,7 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
 
   formColleague: FormGroup
 
-  constructor(private fb: FormBuilder, private colleagueServ:ColleagueService) {
+  constructor(private fb: FormBuilder, private colleagueServ:ColleagueService, private router:Router) {
     this.formColleague = fb.group({
       pseudo:['',{
         validators: [Validators.required],
@@ -34,6 +35,7 @@ export class CreateCollegueReactiveFormsComponent implements OnInit {
       photo: this.formColleague.get("photo")?.value
     }
     this.colleagueServ.addColleague(newColleague).subscribe(colleague => newColleague = colleague)
+    this.router.navigateByUrl("/colleagues")
   }
 
   get pseudoRequis(){

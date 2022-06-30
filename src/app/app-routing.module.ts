@@ -1,3 +1,5 @@
+import { ShowColleaguePage } from './pages/show-colleague/show-colleague.page';
+import { ColleagueComponent } from './shared/components/colleague/colleague.component';
 import { CreateCollegueReactivePage } from './pages/create-collegue-reactive/create-collegue-reactive.page';
 import { CreateColleaguePage } from './pages/create-colleague/create-colleague.page';
 import { WelcomePage } from './pages/welcome/welcome.page';
@@ -8,7 +10,9 @@ import { CommonModule } from '@angular/common';
 const routes:Routes = [
   {path:'colleagues', component: WelcomePage},
   {path:'form-template', component: CreateColleaguePage},
-  {path:'form-reactive', component: CreateCollegueReactivePage}
+  {path:'form-reactive', component: CreateCollegueReactivePage},
+  {path:'colleagues/:pseudo', component: ShowColleaguePage},
+  {path:'', pathMatch:"full", redirectTo:'/colleagues'}
 ]
 
 @NgModule({

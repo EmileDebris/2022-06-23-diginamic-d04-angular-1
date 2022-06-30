@@ -23,6 +23,8 @@ export class ColleagueComponent implements OnInit, OnDestroy {
       this.col.score = fullcol.score}) ;
   }
 
+
+
   ngOnInit(): void {
     this.abonnement = this.voteService.abonner()
     .subscribe(vote => {

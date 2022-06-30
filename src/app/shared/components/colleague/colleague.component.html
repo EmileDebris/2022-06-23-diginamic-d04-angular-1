@@ -1,7 +1,7 @@
 <img class="img-fluid" src={{col.photo}} alt={{col.pseudo}}>
 <br>
 <p>
-  {{col.pseudo | uppercase}}
+  <a [routerLink]="['/colleagues', col.pseudo]">{{col.pseudo | uppercase}}</a>
   <br>
   {{col.score | score}}
   <br>

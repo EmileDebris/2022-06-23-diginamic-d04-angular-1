@@ -1,3 +1,4 @@
+import { ShowColleagueModule } from './pages/show-colleague/show-colleague.module';
 import { CreateCollegueReactivePage } from './pages/create-collegue-reactive/create-collegue-reactive.page';
 import { CreateColleaguePage } from './pages/create-colleague/create-colleague.page';
 import { WelcomePage } from './pages/welcome/welcome.page';
@@ -25,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     CreateColleagueModule,
     CreateCollegueReactiveModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ShowColleagueModule
   ],
   providers: [],
   bootstrap: [AppComponent]

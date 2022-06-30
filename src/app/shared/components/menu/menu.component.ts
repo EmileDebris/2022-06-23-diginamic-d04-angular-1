@@ -9,6 +9,13 @@ export class MenuComponent implements OnInit {
 
   constructor() { }
 
+  bool:boolean = true
+
+  collapse(){
+    this.bool = !this.bool
+  }
+
+
   ngOnInit(): void {
   }
 

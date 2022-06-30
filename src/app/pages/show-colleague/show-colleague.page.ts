@@ -10,7 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ShowColleaguePage implements OnInit {
 
-  colleague!:FullColleague
+  colleague:FullColleague={
+    pseudo : '',
+    score : 0,
+    photo : '',
+    last: '',
+    first: ''
+  }
 
   constructor(private activatedRoute:ActivatedRoute, private colleagueServ : ColleagueService, private router:Router) { }
 
